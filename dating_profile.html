@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | AK</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter & Material Icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Material+Icons&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 999px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 999px;
+        }
+        /* Custom transitions */
+        .transition-all-200 {
+            transition: all 0.2s ease-in-out;
+        }
+        /* Prevent outer iframe scrolling collisions in Notion */
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-[#ffffff] text-[#37352f] dark:bg-[#191919] dark:text-[#ebecee] font-sans min-h-screen transition-colors duration-200">
+
+    <!-- Banner Image Area (Pacific Northwest Forest & Mountain Theme) -->
+    <div class="relative w-full h-40 md:h-52 bg-slate-100 dark:bg-[#202020] overflow-hidden">
+        <svg class="absolute inset-0 w-full h-full object-cover opacity-80 dark:opacity-40" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#146c2e" fill-opacity="0.08" d="M0,96L80,112C160,128,320,160,480,154.7C640,149,800,107,960,112C1120,117,1280,171,1360,197.3L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            <path fill="#0d522c" fill-opacity="0.05" d="M0,192L48,197.3C96,203,192,213,288,197.3C384,181,480,139,576,144C672,149,768,203,864,229.3C960,256,1056,256,1152,229.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        
+        <!-- Light / Dark Mode Control -->
+        <div class="absolute top-4 right-4 flex items-center gap-3 z-10">
+            <button id="themeToggle" class="p-2 rounded-lg bg-white/80 dark:bg-[#2c2c2c]/80 backdrop-blur border border-slate-200 dark:border-neutral-700 text-slate-700 dark:text-neutral-200 shadow-sm hover:scale-105 transition-transform" aria-label="Toggle dark mode">
+                <span id="themeIcon" class="material-icons text-xl block">dark_mode</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Notion Page Wrapper -->
+    <div class="max-w-3xl mx-auto px-4 md:px-6 pb-24 relative -mt-12 z-10">
+        
+        <!-- Large Emoji Icon (Classic Notion Style) -->
+        <div class="inline-flex items-center justify-center text-6xl bg-[#ffffff] dark:bg-[#191919] p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-neutral-800 select-none">
+            🌲
+        </div>
+
+        <!-- Page Title -->
+        <div class="mt-4 mb-1">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[#37352f] dark:text-[#ebecee]">AK // Rhythms, Roots & Walks</h1>
+        </div>
+        
+        <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-400 dark:text-neutral-500 mb-6 pb-4 border-b border-neutral-200 dark:border-neutral-800">
+            <span class="material-icons text-base">info</span>
+            <span>Last Updated: Just now</span>
+            <span>•</span>
+            <span>Values: Grounded, Curious & Active</span>
+        </div>
+
+        <!-- Notion Property Table -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 bg-[#fbfbfa] dark:bg-[#202020] p-4 md:p-5 rounded-xl border border-slate-200/60 dark:border-neutral-800/80">
+            <div class="space-y-3 text-sm">
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">badge</span> Name</span>
+                    <span class="font-medium text-slate-800 dark:text-neutral-200">AK</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">cake</span> Age</span>
+                    <span class="font-medium text-slate-800 dark:text-neutral-200">33 Years Old</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0 text-sm"><span class="material-icons text-sm">place</span> Home</span>
+                    <span class="font-medium flex flex-wrap items-center gap-1 text-slate-800 dark:text-neutral-200">
+                        Seattle, WA 
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 font-normal">Cap Hill</span>
+                    </span>
+                </div>
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">favorite</span> Intention</span>
+                    <span class="font-medium text-emerald-600 dark:text-emerald-400">Looking for a great partner & teammate</span>
+                </div>
+            </div>
+            <div class="space-y-3 text-sm">
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">explore</span> Wilderness</span>
+                    <span class="font-medium text-slate-800 dark:text-neutral-200">Trail hiking, mountain air, staying fit</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">coffee</span> Coffee</span>
+                    <span class="font-medium text-slate-800 dark:text-neutral-200">Simple black roast, morning walks</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">music_note</span> Creativity</span>
+                    <span class="font-medium text-slate-800 dark:text-neutral-200">Fretless Bass Guitar & rhythm grooves</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="w-24 text-neutral-400 dark:text-neutral-500 flex items-center gap-1 shrink-0"><span class="material-icons text-sm">brush</span> Craft</span>
+                    <span class="font-medium text-slate-800 dark:text-neutral-200 text-xs">ML Engineer (Recommendation Systems)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notion Callout Block -->
+        <div class="flex gap-4 p-4 rounded-lg bg-emerald-50/40 border border-emerald-100 dark:bg-emerald-950/10 dark:border-emerald-900/40 mb-6">
+            <div class="text-2xl select-none">👋</div>
+            <div class="text-xs md:text-sm leading-relaxed text-slate-700 dark:text-neutral-300">
+                <strong class="text-slate-900 dark:text-white font-semibold">Welcome! Why are you seeing this?</strong><br>
+                If we connected on a dating app, I built this space because standard prompt boxes feel a bit cramped. I value thoughtfulness, grounding, good music, staying active, and living intentionally. Have a little scroll, explore my daily rhythms, and let's see if we connect!
+            </div>
+        </div>
+
+        <!-- Interactive Toggle List Header -->
+        <h2 class="text-lg font-bold mt-6 mb-3 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
+            <span class="material-icons text-neutral-400">segment</span> Personal Rhythms & Philosophy
+        </h2>
+
+        <!-- Toggle Item 1: The Core Lifestyle Balance -->
+        <details class="group mb-3 border border-slate-200/80 dark:border-neutral-800 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden" open>
+            <summary class="flex items-center justify-between p-3.5 bg-slate-50 dark:bg-[#202020] cursor-pointer select-none">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons transition-transform group-open:rotate-90 text-neutral-400">chevron_right</span>
+                    <span class="font-medium text-xs md:text-sm">🌲 Lifestyle & Values (What Drives Me)</span>
+                </div>
+                <span class="text-[10px] text-neutral-400 group-open:hidden">Expand</span>
+                <span class="text-[10px] text-neutral-400 hidden group-open:block">Collapse</span>
+            </summary>
+            <div class="p-4 border-t border-slate-200/80 dark:border-neutral-800 text-sm space-y-4 leading-relaxed">
+                <div>
+                    <h4 class="font-semibold text-[10px] text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">My Work (Connecting Inspiration)</h4>
+                    <p class="text-slate-700 dark:text-neutral-300 text-xs md:text-sm">
+                        I build and scale recommendation systems at places like YouTube and Pinterest. I genuinely love working on tech where the end goal is human: helping people discover creative ideas, recipes, hobbies, and video clips that spark real-world inspiration.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-[10px] text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">My Roots & Grounding</h4>
+                    <p class="text-slate-700 dark:text-neutral-300 text-xs md:text-sm">
+                        I am very close with my family, value daily self-discipline, and try to keep an open, curious outlook on life. To me, being able to share deep, effortless conversations over history, philosophy, or what's currently in your headphones is the real foundation of compatibility.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-[10px] text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">Daily Movement & Outdoors</h4>
+                    <p class="text-slate-700 dark:text-neutral-300 text-xs md:text-sm">
+                        Staying active keeps my mind clear. On the weekends, you’ll usually find me packing a bag to hike up a peak in the Cascades, or putting in work during a dedicated lifting session. I also enjoy the simple routine of prepping healthy food to sustain it all.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-[10px] text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">Creative Flow & Sound</h4>
+                    <p class="text-slate-700 dark:text-neutral-300 text-xs md:text-sm">
+                        I play fretless bass guitar. Music is a huge outlet for me. There is nothing quite like sliding into a deep groove with headphones on after a busy day—it's a form of active meditation.
+                    </p>
+                </div>
+            </div>
+        </details>
+
+        <!-- Toggle Item 2: Interactive 2 Truths & A Lie -->
+        <details id="gameToggle" class="group mb-6 border border-slate-200/80 dark:border-neutral-800 rounded-lg overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between p-3.5 bg-slate-50 dark:bg-[#202020] cursor-pointer select-none">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons transition-transform group-open:rotate-90 text-neutral-400">chevron_right</span>
+                    <span class="font-medium text-xs md:text-sm">🎮 Interactive: Two Truths and a Lie</span>
+                </div>
+                <span class="text-[10px] text-neutral-400">Guess the Lie!</span>
+            </summary>
+            <div class="p-4 border-t border-slate-200/80 dark:border-neutral-800 text-sm">
+                <p class="text-slate-600 dark:text-neutral-400 mb-4 text-xs md:text-sm">Tap on the statement below you think is the **LIE** to reveal the truth:</p>
+                
+                <div class="space-y-3" id="truthsAndLiesContainer">
+                    <!-- Option A -->
+                    <button onclick="guessOption('A', this)" class="w-full text-left p-3 rounded-lg border border-slate-200 dark:border-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-800 transition-all duration-150 flex items-start gap-3 text-xs md:text-sm">
+                        <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 font-semibold text-[10px] mt-0.5">A</span>
+                        <span>"I once spent a month backpacking solo through trails in Indonesia, the Philippines, and the high-altitude routes of Nepal."</span>
+                    </button>
+                    <!-- Option B -->
+                    <button onclick="guessOption('B', this)" class="w-full text-left p-3 rounded-lg border border-slate-200 dark:border-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-800 transition-all duration-150 flex items-start gap-3 text-xs md:text-sm">
+                        <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 font-semibold text-[10px] mt-0.5">B</span>
+                        <span>"I once booked a private coaching session with an Olympic weightlifter and barely managed to survive the warmup."</span>
+                    </button>
+                    <!-- Option C -->
+                    <button onclick="guessOption('C', this)" class="w-full text-left p-3 rounded-lg border border-slate-200 dark:border-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-800 transition-all duration-150 flex items-start gap-3 text-xs md:text-sm">
+                        <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 font-semibold text-[10px] mt-0.5">C</span>
+                        <span>"My Instant Pot is legally registered as my dependent on tax forms because of how much weekly meal-prepping it handles."</span>
+                    </button>
+                </div>
+
+                <!-- Custom Feedback Area for the Game -->
+                <div id="gameResult" class="hidden mt-4 p-4 rounded-lg text-xs md:text-sm leading-relaxed transition-all duration-200"></div>
+            </div>
+        </details>
+
+        <!-- Notion Divider -->
+        <hr class="border-neutral-200 dark:border-neutral-800 my-6">
+
+        <!-- Compatibility Calculator Section -->
+        <h2 class="text-lg font-bold mt-6 mb-2 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
+            <span class="material-icons text-neutral-400">analytics</span> The Lifestyle Alignment Check
+        </h2>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4">A playful look at how our daily styles mesh. Adjust the preferences below to estimate our alignment score.</p>
+
+        <div class="bg-[#fbfbfa] dark:bg-[#202020] border border-slate-200/80 dark:border-neutral-800 rounded-xl p-4 md:p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Inputs column -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Ideal Weekend Vibe</label>
+                        <select id="calcWeekend" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+                            <option value="Hiking/Outdoors">🌲 Wilderness & Trails (Hiking the Cascades)</option>
+                            <option value="Live Music/Gig">🎸 Live Music (Catching a local gig)</option>
+                            <option value="Gaming/Puzzle Board Games">🎲 Cozy Evenings (Intricate board games & food)</option>
+                            <option value="Sleeping In">💤 Slow Pace (Quiet mornings with zero plans)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Coffee Preference</label>
+                        <select id="calcCoffee" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+                            <option value="Black/Dark Roast">☕ Simple Dark Roast / Black Coffee</option>
+                            <option value="Sweet/Latte">🥛 Flat White / Creamy Latte</option>
+                            <option value="Tea Only">🍵 Green Tea / Fresh Matcha</option>
+                            <option value="No Caffeine">❌ Decaf / Just good energy</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Conversation Style</label>
+                            <span id="humorValue" class="text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400">85%</span>
+                        </div>
+                        <input type="range" id="calcHumor" min="0" max="100" value="85" class="w-full h-1.5 bg-slate-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+                        <div class="flex justify-between text-[10px] text-neutral-400 mt-1">
+                            <span>Mainly Quiet & Observant</span>
+                            <span>Expressive, Lively & Playful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Results Column -->
+                <div class="flex flex-col items-center justify-center p-4 bg-white dark:bg-[#191919] rounded-xl border border-slate-200/60 dark:border-neutral-800 text-center relative overflow-hidden">
+                    <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Alignment Score</div>
+                    
+                    <!-- Large Score Circle -->
+                    <div class="relative flex items-center justify-center my-3">
+                        <svg class="w-28 h-28 transform -rotate-90">
+                            <circle cx="56" cy="56" r="48" stroke="currentColor" class="text-slate-100 dark:text-neutral-800" stroke-width="8" fill="transparent"></circle>
+                            <circle id="scoreProgressCircle" cx="56" cy="56" r="48" stroke="currentColor" class="text-emerald-600 dark:text-emerald-400 transition-all duration-300" stroke-width="8" fill="transparent" stroke-dasharray="301.6" stroke-dashoffset="301.6" stroke-linecap="round"></circle>
+                        </svg>
+                        <div class="absolute text-2xl font-extrabold tracking-tight text-slate-800 dark:text-neutral-200" id="compatibilityScore">0%</div>
+                    </div>
+
+                    <div class="text-sm md:text-base font-semibold text-slate-800 dark:text-white" id="verdictTitle">Checking...</div>
+                    <p class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-2 max-w-[200px]" id="verdictDescription">Adjust the options to see how our daily rhythms align!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notion Quote Blocks -->
+        <h2 class="text-lg font-bold mt-10 mb-4 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
+            <span class="material-icons text-neutral-400">rate_review</span> Peer Evaluations (Quotes)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 border-l-2 border-neutral-300 dark:border-neutral-700 bg-slate-50/50 dark:bg-[#202020]/30 text-xs italic space-y-2">
+                <p>"Preps a solid, high-protein chicken breast and makes a killer dark roast. Highly consistent companion in the kitchen."</p>
+                <div class="font-semibold text-[9px] text-neutral-400 dark:text-neutral-500 not-italic uppercase tracking-wider">— My Instant Pot</div>
+            </div>
+            <div class="p-4 border-l-2 border-neutral-300 dark:border-neutral-700 bg-slate-50/50 dark:bg-[#202020]/30 text-xs italic space-y-2">
+                <p>"Incredibly patient. He doesn't complain when I have him loop the exact same deep rhythmic line for 45 minutes straight."</p>
+                <div class="font-semibold text-[9px] text-neutral-400 dark:text-neutral-500 not-italic uppercase tracking-wider">— Fretless Bass Instructor</div>
+            </div>
+            <div class="p-4 border-l-2 border-neutral-300 dark:border-neutral-700 bg-slate-50/50 dark:bg-[#202020]/30 text-xs italic space-y-2">
+                <p>"Very grounded. But physically impossible to keep indoors if there is a mountain trail nearby. Solid, reliable hike partner."</p>
+                <div class="font-semibold text-[9px] text-neutral-400 dark:text-neutral-500 not-italic uppercase tracking-wider">— Best Friend / Hiking Partner</div>
+            </div>
+        </div>
+
+        <!-- Notion Divider -->
+        <hr class="border-neutral-200 dark:border-neutral-800 my-6">
+
+        <!-- Mock Database Submit Area -->
+        <div class="mt-6 bg-emerald-50/10 dark:bg-neutral-900/40 p-5 md:p-6 rounded-xl border border-emerald-100/60 dark:border-neutral-800">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="p-2 bg-emerald-50 dark:bg-neutral-800 rounded-lg text-emerald-600 dark:text-emerald-400 material-icons">chat</span>
+                <h3 class="text-md md:text-lg font-bold text-neutral-800 dark:text-white">Say Hello</h3>
+            </div>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4">If you find yourself nodding along with these points, leave a brief note. It will let us take our connection offline for a quick stroll or coffee!</p>
+
+            <form id="dbConnectForm" onsubmit="handleDbSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1">First Name or App Nickname</label>
+                        <input type="text" id="dbName" required placeholder="Ex: Chloe" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1">Your Favorite Seattle Beverage</label>
+                        <input type="text" id="dbDrink" required placeholder="Ex: Flat White, Matcha, IPA" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1">Your Ideal Sunday walk looks like...</label>
+                    <textarea id="dbMessage" rows="3" required placeholder="Grabbing coffee, walking around Green Lake, exploring local vinyl spots..." class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-icons text-base">send</span> Send Coffee Sync Request
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Custom Success Modal (Replaces standard unsafe alerts) -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+        <div class="bg-white dark:bg-[#1e1e1e] border border-slate-200 dark:border-neutral-800 max-w-md w-full p-6 rounded-2xl shadow-xl text-center">
+            <span class="text-4xl select-none block mb-3">☕</span>
+            <h3 class="text-md md:text-lg font-bold text-neutral-800 dark:text-white mb-1">Sync details ready!</h3>
+            <p id="successMessage" class="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">Your daily rhythm is locked in. Here's a custom message you can send directly back on our chat:</p>
+            
+            <div class="p-3 bg-slate-50 dark:bg-neutral-800 rounded-lg text-[10px] md:text-xs font-mono mb-4 text-slate-600 dark:text-neutral-300 flex items-center justify-between gap-2">
+                <span id="copyText" class="text-left font-sans">"Hey AK! Checked your page. We hit 88% alignment. Let's grab some coffee."</span>
+                <button onclick="copyToClipboardText()" class="flex items-center justify-center p-1.5 rounded hover:bg-slate-200 dark:hover:bg-neutral-700 text-slate-500 shrink-0" title="Copy message" type="button">
+                    <span id="copyIcon" class="material-icons text-base">content_copy</span>
+                </button>
+            </div>
+
+            <button onclick="closeSuccessModal()" class="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm rounded-lg transition-colors" type="button">
+                Back to Portfolio
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        // Load cached theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            htmlElement.classList.remove('light');
+            themeIcon.innerText = 'light_mode';
+        } else {
+            htmlElement.classList.add('light');
+            htmlElement.classList.remove('dark');
+            themeIcon.innerText = 'dark_mode';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                themeIcon.innerText = 'dark_mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                themeIcon.innerText = 'light_mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        function guessOption(option, element) {
+            const container = document.getElementById('truthsAndLiesContainer');
+            const resultBox = document.getElementById('gameResult');
+            const buttons = container.getElementsByTagName('button');
+
+            // Reset all button styles and lock input
+            for (let btn of buttons) {
+                btn.disabled = true;
+                btn.classList.remove('border-emerald-500', 'bg-emerald-50/20', 'border-rose-400', 'bg-rose-50/20');
+            }
+
+            resultBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'dark:bg-emerald-950/20', 'dark:text-emerald-400', 'bg-rose-50', 'text-rose-800', 'dark:bg-rose-950/20', 'dark:text-rose-400');
+
+            if (option === 'C') {
+                // Correctly guessed the lie
+                element.classList.add('border-emerald-500', 'bg-emerald-50/50', 'dark:bg-emerald-950/10');
+                resultBox.classList.add('bg-emerald-50', 'text-emerald-800', 'dark:bg-emerald-950/20', 'dark:text-emerald-400');
+                resultBox.innerHTML = `
+                    <div class="flex gap-2">
+                        <span class="material-icons">check_circle</span>
+                        <div>
+                            <strong>Spot on! You spotted the lie.</strong><br>
+                            Statement <strong>C</strong> is indeed the lie. While my trusty Instant Pot is the absolute MVP of my kitchen routine and handles daily meal prep operations with flawless consistency, the tax codes aren't quite ready to count it as a legal dependent!
+                            <br><br>
+                            <strong>A & B are absolutely true:</strong> I spent a solo month backpacking overseas, negotiating mountain ridges in Nepal, and I survived an incredibly grueling warmup session with a competitive Olympic weightlifter!
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Selected a true statement
+                element.classList.add('border-rose-400', 'bg-rose-50/50', 'dark:bg-rose-950/10');
+                resultBox.classList.add('bg-rose-50', 'text-rose-800', 'dark:bg-rose-950/20', 'dark:text-rose-400');
+                resultBox.innerHTML = `
+                    <div class="flex gap-2">
+                        <span class="material-icons">cancel</span>
+                        <div>
+                            <strong>That is actually a complete TRUTH!</strong><br>
+                            Statement <strong>${option}</strong> really happened. 
+                            <br><br>
+                            The real **LIE** is statement <strong>C</strong>. The Instant Pot helps keep me healthy and ready for active weekends, but the government isn't ready to let me claim home appliances on tax forms yet!
+                        </div>
+                    </div>
+                `;
+            }
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        const weekendInput = document.getElementById('calcWeekend');
+        const coffeeInput = document.getElementById('calcCoffee');
+        const humorInput = document.getElementById('calcHumor');
+        const humorDisplayVal = document.getElementById('humorValue');
+
+        const compatScoreText = document.getElementById('compatibilityScore');
+        const progressCircle = document.getElementById('scoreProgressCircle');
+        const verdictTitle = document.getElementById('verdictTitle');
+        const verdictDesc = document.getElementById('verdictDescription');
+
+        function runCalculator() {
+            const humorVal = parseInt(humorInput.value);
+            humorDisplayVal.innerText = `${humorVal}%`;
+
+            // Calculate score factors
+            let weekendScore = 0;
+            switch(weekendInput.value) {
+                case 'Hiking/Outdoors': weekendScore = 100; break;
+                case 'Live Music/Gig': weekendScore = 85; break;
+                case 'Gaming/Puzzle Board Games': weekendScore = 75; break;
+                case 'Sleeping In': weekendScore = 55; break;
+            }
+
+            let coffeeScore = 0;
+            switch(coffeeInput.value) {
+                case 'Black/Dark Roast': coffeeScore = 100; break;
+                case 'Sweet/Latte': coffeeScore = 80; break;
+                case 'Tea Only': coffeeScore = 60; break;
+                case 'No Caffeine': coffeeScore = 40; break;
+            }
+
+            // Ideal conversation vibe target is around 80-85% (warm & engaged)
+            const humorSynergy = 100 - Math.abs(85 - humorVal);
+
+            // Weighted balance calculation
+            const finalScore = Math.round((weekendScore * 0.45) + (coffeeScore * 0.25) + (humorSynergy * 0.3));
+
+            // Set the circle progress
+            const circumference = 2 * Math.PI * 48; // radius = 48, circumference ~301.6
+            const strokeOffset = circumference - (finalScore / 100) * circumference;
+            progressCircle.style.strokeDashoffset = strokeOffset;
+
+            compatScoreText.innerText = `${finalScore}%`;
+
+            // Verdict breakdowns with warm, lifestyle-first tones
+            if (finalScore >= 90) {
+                verdictTitle.innerText = "Ideal Co-Pilot 🌲";
+                verdictDesc.innerText = "Our weekly rhythms match up beautifully. Coffee walks, active weekends, and conversations are set to mesh perfectly.";
+            } else if (finalScore >= 75) {
+                verdictTitle.innerText = "Great Synergy ☕";
+                verdictDesc.innerText = "Strong daily alignment here. We likely share a love for refreshing outdoor walks, live tunes, or peaceful weekend rituals.";
+            } else if (finalScore >= 55) {
+                verdictTitle.innerText = "Good Vibe 🎸";
+                verdictDesc.innerText = "Healthy compatibility. A few style differences, but definitely room to share unique perspectives over local coffee.";
+            } else {
+                verdictTitle.innerText = "A Unique Mix ⚡";
+                verdictDesc.innerText = "We might have slightly different daily rhythms, but some of the best conversations happen between opposites!";
+            }
+        }
+
+        // Attach listeners to calculation inputs
+        weekendInput.addEventListener('change', runCalculator);
+        coffeeInput.addEventListener('change', runCalculator);
+        humorInput.addEventListener('input', runCalculator);
+
+        // Run calculator on initial load
+        runCalculator();
+
+        function handleDbSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('dbName').value.trim();
+            const drink = document.getElementById('dbDrink').value.trim();
+            const message = document.getElementById('dbMessage').value.trim();
+            const calcScore = compatScoreText.innerText;
+
+            if (!name || !drink || !message) return;
+
+            // Generate customized success message & clipboard copy
+            const copyCodeText = document.getElementById('copyText');
+            const userMessageText = `"Hey AK! Checked out your page. We hit an alignment score of ${calcScore}. Let's catch some ${drink}."`;
+            copyCodeText.innerText = userMessageText;
+
+            const modalMsg = document.getElementById('successMessage');
+            modalMsg.innerHTML = `
+                Note sent! Thank you, <strong>${name}</strong>, for taking a look at my rhythms. It's fun to hear that your go-to weekend beverage is a <strong>${drink}</strong>. Let's move our chat back to the app and plan a real walk!
+            `;
+
+            // Open popup modal
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('hidden');
+
+            // Reset Form
+            document.getElementById('dbConnectForm').reset();
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        function copyToClipboardText() {
+            const textToCopy = document.getElementById('copyText').innerText;
+            
+            // Safe fallback method for iFrame and cross-origin environments
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = textToCopy;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextarea);
+
+            // Give user friendly visual feedback
+            const copyIcon = document.getElementById('copyIcon');
+            copyIcon.innerText = 'done';
+            copyIcon.classList.add('text-emerald-500');
+            setTimeout(() => {
+                copyIcon.innerText = 'content_copy';
+                copyIcon.classList.remove('text-emerald-500');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

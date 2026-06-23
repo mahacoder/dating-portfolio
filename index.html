@@ -81,20 +81,20 @@
 </head>
 <body class="bg-[#ffffff] text-[#37352f] dark:bg-[#191919] dark:text-[#ebecee] font-sans min-h-screen transition-colors duration-200">
 
-    <!-- Banner Image Area (Pacific Northwest Forest & Mountain Theme) -->
-    <div class="relative w-full h-40 md:h-52 bg-slate-100 dark:bg-[#202020] overflow-hidden">
-        <svg class="absolute inset-0 w-full h-full object-cover opacity-80 dark:opacity-40" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#146c2e" fill-opacity="0.08" d="M0,96L80,112C160,128,320,160,480,154.7C640,149,800,107,960,112C1120,117,1280,171,1360,197.3L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-            <path fill="#0d522c" fill-opacity="0.05" d="M0,192L48,197.3C96,203,192,213,288,197.3C384,181,480,139,576,144C672,149,768,203,864,229.3C960,256,1056,256,1152,229.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
-        
-        <!-- Light / Dark Mode Control -->
-        <div class="absolute top-4 right-4 flex items-center gap-3 z-10">
-            <button id="themeToggle" class="p-2 rounded-lg bg-white/80 dark:bg-[#2c2c2c]/80 backdrop-blur border border-slate-200 dark:border-neutral-700 text-slate-700 dark:text-neutral-200 shadow-sm hover:scale-105 transition-transform" aria-label="Toggle dark mode">
-                <span id="themeIcon" class="material-icons text-xl block">dark_mode</span>
-            </button>
+    <!-- Banner Image Area -->
+        <div class="relative w-full h-80 bg-slate-900 overflow-hidden shadow-2xl">
+            <!-- Hero Background Image using teton.jpg -->
+            <img src="./images/teton.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="Grand Teton Mountains">
+            
+            <!-- Dark Gradient Overlay for text contrast -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            
+            <!-- Title Area -->
+            <div class="absolute bottom-10 left-10 text-white z-10">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Ananth</h1>
+                <p class="text-lg opacity-90">High Drive, Slow Mornings & Open Trails</p>
+            </div>
         </div>
-    </div>
 
     <!-- Notion Page Wrapper -->
     <div class="max-w-3xl mx-auto px-4 md:px-6 pb-24 relative -mt-12 z-10">

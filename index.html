@@ -647,16 +647,22 @@
 
         function selectFuel(value, element) {
             document.getElementById('calcFuel').value = value;
+            
+            // Reset all buttons to the "inactive" state
             document.querySelectorAll('.fuel-card').forEach(card => {
                 card.classList.remove('border-amber-600', 'bg-amber-50/50');
                 card.classList.add('border-slate-200');
             });
+            
+            // Set the clicked button to the "active" state
+            element.classList.remove('border-slate-200');
             element.classList.add('border-amber-600', 'bg-amber-50/50');
+            
             runCalculator();
         }
 
         function runCalculator() {
-                // 1. Get the slider element safely
+            // 1. Get the slider element safely
             const slider = document.getElementById('calcHumor');
             const humorVal = parseInt(slider.value);
             
@@ -676,11 +682,23 @@
             };
             const fuelPhrase = fuelMap[fuel] || "";
 
-            if (activity === 'wandering') { title = "Urban Explorer"; icon = "map"; description = fuelPhrase + "wander aimlessly to hunt for curios."; }
-            else if (activity === 'music') { title = "Deep Groove"; icon = "music_note"; description = fuelPhrase + "soak in the live instruments at a jazz club."; }
-            else if (activity === 'hiking') { title = "Alpine Start"; icon = "landscape"; description = fuelPhrase + "hit a quiet trail in the Cascades."; }
-            else if (activity === 'gaming') { title = "Cozy Competitor"; icon = "sports_esports"; description = fuelPhrase + "fire up the Switch for intense co-op."; }
-
+            // Logic based on Activity AND Humor Slider
+            if (activity === 'wandering') { 
+                title = "Urban Explorer"; icon = "map"; 
+                description = fuelPhrase + (humorVal < 50 ? "Wander aimlessly to hunt for curios and discuss the world." : "Wander aimlessly to hunt for curios and make up backstories for the people we pass."); 
+            }
+            else if (activity === 'music') { 
+                title = "Deep Groove"; icon = "music_note"; 
+                description = fuelPhrase + (humorVal < 50 ? "Soak in the live instruments at a jazz club with deep focus." : "Soak in the live instruments and debate the best basslines."); 
+            }
+            else if (activity === 'hiking') { 
+                title = "Alpine Start"; icon = "landscape"; 
+                description = fuelPhrase + (humorVal < 50 ? "Hit a quiet trail in the Cascades for a peaceful hike." : "Hit a quiet trail in the Cascades and laugh at my terrible trail jokes."); 
+            }
+            else if (activity === 'gaming') { 
+                title = "Cozy Competitor"; icon = "sports_esports"; 
+                description = fuelPhrase + (humorVal < 50 ? "Fire up the Switch and fall down a philosophy rabbit hole." : "Fire up the Switch and talk an unbelievable amount of trash."); 
+            }
             document.getElementById('compatibilityIcon').innerText = icon;
             document.getElementById('verdictTitle').innerText = title;
             document.getElementById('verdictDescription').innerText = description;

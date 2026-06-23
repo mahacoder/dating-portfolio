@@ -77,6 +77,16 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .quote-bubble {
+            position: relative;
+            background: #f8fafc;
+            border-radius: 1rem 1rem 1rem 0;
+            padding: 1.5rem;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .dark .quote-bubble { background: #262626; color: #e5e5e5; }
     </style>
 </head>
 <body class="bg-[#ffffff] text-[#37352f] dark:bg-[#191919] dark:text-[#ebecee] font-sans min-h-screen transition-colors duration-200">
@@ -397,21 +407,29 @@
         </div>
         
         <!-- Notion Quote Blocks -->
-        <h2 class="text-lg font-bold mt-10 mb-4 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
-            <span class="material-icons text-neutral-400">rate_review</span> Peer Evaluations (Quotes)
+        <!-- Peer Evaluations (Real + 1 Humorous) -->
+        <h2 class="text-lg font-bold mt-10 mb-6 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
+            <span class="material-icons text-amber-500">rate_review</span> Peer Evaluations
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div class="p-4 border-l-2 border-neutral-300 dark:border-neutral-700 bg-slate-50/50 dark:bg-[#202020]/30 text-xs italic space-y-2">
-                <p>"Preps a solid, high-protein chicken breast and makes a killer dark roast. Highly consistent companion in the kitchen."</p>
-                <div class="font-semibold text-[9px] text-neutral-400 dark:text-neutral-500 not-italic uppercase tracking-wider">— My Instant Pot</div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- Airbnb Host (Real Social Proof: Cleanliness/Reliability) -->
+            <div class="quote-bubble">
+                <p class="text-sm italic">"Hosting Ananth was an absolute pleasure! They were respectful, communicative, and left the space immaculate. It was wonderful to have them as guests, and I highly recommend them to any future hosts. Welcome back anytime!
+"</p>
+                <div class="mt-4 font-semibold text-[10px] text-neutral-500 uppercase tracking-wider">— Airbnb Host, Yellowstone</div>
             </div>
-            <div class="p-4 border-l-2 border-neutral-300 dark:border-neutral-700 bg-slate-50/50 dark:bg-[#202020]/30 text-xs italic space-y-2">
-                <p>"Incredibly patient. He doesn't complain when I have him loop the exact same deep rhythmic line for 45 minutes straight."</p>
-                <div class="font-semibold text-[9px] text-neutral-400 dark:text-neutral-500 not-italic uppercase tracking-wider">— Fretless Bass Instructor</div>
+        
+            <!-- Swim Instructor (Real Social Proof: Coachability/Character) -->
+            <div class="quote-bubble">
+                <p class="text-sm italic">"I have LOVED every lesson with you, Ananth. You're an absolute sweetheart and so fun and lovely to be around. Thank you for bringing me so much JOY these last six sessions and allowing me to be a part of your swimming journey. Truly, it's an honor and means so much to me. I love watching you explore and develop your understanding of being in the water. Thank you for playing in the pool with this kid!"</p>
+                <div class="mt-4 font-semibold text-[10px] text-neutral-500 uppercase tracking-wider">— Instructor, Orca Swim School</div>
             </div>
-            <div class="p-4 border-l-2 border-neutral-300 dark:border-neutral-700 bg-slate-50/50 dark:bg-[#202020]/30 text-xs italic space-y-2">
-                <p>"Very grounded. But physically impossible to keep indoors if there is a mountain trail nearby. Solid, reliable hike partner."</p>
-                <div class="font-semibold text-[9px] text-neutral-400 dark:text-neutral-500 not-italic uppercase tracking-wider">— Best Friend / Hiking Partner</div>
+        
+            <!-- Humorous/Lighthearted (The "Distinguisher") -->
+            <div class="quote-bubble">
+                <p class="text-sm italic">"Preps a solid, high-protein chicken breast and makes a killer dark roast. Highly consistent companion in the kitchen, even if he does occasionally set off the fire alarm."</p>
+                <div class="mt-4 font-semibold text-[10px] text-neutral-500 uppercase tracking-wider">— My Instant Pot</div>
             </div>
         </div>
 

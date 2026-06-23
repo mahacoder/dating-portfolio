@@ -358,7 +358,7 @@
                                 🎸<div class="text-[10px] font-semibold">Jazz Club</div>
                             </button>
                             <button onclick="selectActivity('gaming', this)" class="activity-card group p-3 rounded-xl border-2 border-slate-200 dark:border-neutral-700 text-left transition-all duration-300">
-                                🎲<div class="text-[10px] font-semibold">Switch Night</div>
+                                🎮<div class="text-[10px] font-semibold">Switch Night</div>
                             </button>
                             <button onclick="selectActivity('hiking', this)" class="activity-card group p-3 rounded-xl border-2 border-slate-200 dark:border-neutral-700 text-left transition-all duration-300">
                                 🌲<div class="text-[10px] font-semibold">Hiking</div>
@@ -655,7 +655,15 @@
             runCalculator();
         }
 
-        function runCalculator() {
+        function runCalculator() 
+                // 1. Get the slider element safely
+            const slider = document.getElementById('calcHumor');
+            const humorVal = parseInt(slider.value);
+            
+            // 2. Update the text label
+            const humorLabel = document.getElementById('humorValue');
+            humorLabel.innerText = humorVal < 50 ? "Deep & Observant" : "Expressive & Playful";
+        
             const activity = document.getElementById('calcActivity').value;
             const fuel = document.getElementById('calcFuel').value;
             let title = "The Explorer", description = "Select an option to begin.", icon = "explore";

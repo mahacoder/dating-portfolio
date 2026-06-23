@@ -655,7 +655,12 @@
             const fuel = document.getElementById('calcFuel').value;
             let title = "The Explorer", description = "Select an option to begin.", icon = "explore";
             
-            const fuelMap = { 'coffee': "Grab some coffee, ", 'drinks': "Grab some drinks, ", 'none': "" };
+            const fuelMap = { 
+                'coffee': "Grab some coffee, ", 
+                'drinks': "Grab some drinks, ", 
+                'bites': "Grab some bites, ", 
+                'none': "" 
+            };
             const fuelPhrase = fuelMap[fuel] || "";
 
             if (activity === 'wandering') { title = "Urban Explorer"; icon = "map"; description = fuelPhrase + "wander aimlessly to hunt for curios."; }

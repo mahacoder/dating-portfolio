@@ -374,9 +374,16 @@
                             <button onclick="selectFuel('drinks', this)" class="fuel-card px-3 py-1.5 rounded-full border-2 border-slate-200 text-[10px] font-medium">Drinks</button>
                         </div>
                     </div>
+                    <!-- Humor slider -->
+                    <div id="humor-slider-container">
+                        <label class="block text-[10px] font-semibold text-amber-600 uppercase tracking-wider mb-2">Conversation Style</label>
+                        <input type="range" id="calcHumor" min="0" max="100" value="30" class="w-full h-1.5 bg-slate-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer">
+                    </div>
                 </div>
                 <!-- Output -->
                 <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-black/20 rounded-2xl border border-slate-200/60 dark:border-neutral-800 text-center shadow-sm relative min-h-[200px]">
+                    <input type="hidden" id="calcActivity" value="wandering">
+                    <input type="hidden" id="calcFuel" value="none">
                     <div class="text-[10px] font-bold text-amber-600 uppercase tracking-widest mb-3">Calculated Result</div>
                     <div id="vibeCard" class="flex flex-col items-center justify-center p-6 bg-slate-50 dark:bg-[#202020] rounded-2xl shadow-inner">
                         <span id="compatibilityIcon" class="material-icons text-5xl text-amber-500 mb-4">explore</span>

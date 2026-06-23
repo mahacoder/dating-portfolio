@@ -407,15 +407,15 @@
             const container = document.getElementById('truthsAndLiesContainer');
             const resultBox = document.getElementById('gameResult');
             const buttons = container.getElementsByTagName('button');
-
+        
             // Reset all button styles and lock input
             for (let btn of buttons) {
                 btn.disabled = true;
                 btn.classList.remove('border-emerald-500', 'bg-emerald-50/20', 'border-rose-400', 'bg-rose-50/20');
             }
-
+        
             resultBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'dark:bg-emerald-950/20', 'dark:text-emerald-400', 'bg-rose-50', 'text-rose-800', 'dark:bg-rose-950/20', 'dark:text-rose-400');
-
+        
             if (option === 'C') {
                 // Correctly guessed the lie
                 element.classList.add('border-emerald-500', 'bg-emerald-50/50', 'dark:bg-emerald-950/10');
@@ -425,9 +425,9 @@
                         <span class="material-icons">check_circle</span>
                         <div>
                             <strong>Spot on! You spotted the lie.</strong><br>
-                            Statement <strong>C</strong> is indeed the lie. While my trusty Instant Pot is the absolute MVP of my kitchen routine and handles daily meal prep operations with flawless consistency, the tax codes aren't quite ready to count it as a legal dependent!
+                            Statement <strong>C</strong> is indeed the lie. I am entirely self-taught and still very much a beginner on the bass, but I am practicing!
                             <br><br>
-                            <strong>A & B are absolutely true:</strong> I spent a solo month backpacking overseas, negotiating mountain ridges in Nepal, and I survived an incredibly grueling warmup session with a competitive Olympic weightlifter!
+                            <strong>A & B are absolutely true:</strong> I successfully lost 50 lbs and rebuilt my relationship with fitness, and I really did train alongside an Olympic silver medalist!
                         </div>
                     </div>
                 `;
@@ -442,7 +442,7 @@
                             <strong>That is actually a complete TRUTH!</strong><br>
                             Statement <strong>${option}</strong> really happened. 
                             <br><br>
-                            The real **LIE** is statement <strong>C</strong>. The Instant Pot helps keep me healthy and ready for active weekends, but the government isn't ready to let me claim home appliances on tax forms yet!
+                            The real <strong>LIE</strong> is statement <strong>C</strong>. I am entirely self-taught and still very much a beginner on the bass!
                         </div>
                     </div>
                 `;

@@ -396,6 +396,11 @@
                         <span id="compatibilityIcon" class="material-icons text-5xl text-amber-500 mb-4">explore</span>
                         <div class="text-sm font-bold" id="verdictTitle">Checking...</div>
                         <p class="text-xs mt-2 leading-relaxed typing" id="verdictDescription">Adjust the sliders to generate our itinerary.</p>
+
+                        <!-- New "Adopt" Button -->
+                        <button onclick="adoptPlan()" class="mt-4 text-[10px] font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 underline underline-offset-4 cursor-pointer">
+                            Adopt this plan &rarr;
+                        </button>
                     </div>
                 </div>
             </div>
@@ -726,6 +731,22 @@
             document.getElementById('successMessage').innerHTML = `Note ready for ${name}! Copy this text to send:`;
             document.getElementById('successModal').classList.remove('hidden');
             document.getElementById('dbConnectForm').reset();
+        }
+
+        function adoptPlan() {
+            // 1. Get the current forecaster values
+            const title = document.getElementById('verdictTitle').innerText;
+            const desc = document.getElementById('verdictDescription').innerText;
+            
+            // 2. Insert into the form's textarea
+            const messageField = document.getElementById('dbMessage');
+            messageField.value = `I really like the "${title}" plan: ${desc}\n\n`;
+            
+            // 3. Smoothly scroll to the form
+            document.getElementById('dbConnectForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // 4. Focus the textarea so they can start typing their own note immediately
+            messageField.focus();
         }
 
         function closeSuccessModal() {

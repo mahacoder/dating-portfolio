@@ -65,6 +65,14 @@
             border: 2px solid #10b981; /* Emerald border */
             cursor: pointer;
         }
+        /* Animation for the flashcard reveal */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-[#ffffff] text-[#37352f] dark:bg-[#191919] dark:text-[#ebecee] font-sans min-h-screen transition-colors duration-200">
@@ -367,17 +375,19 @@
                 <input type="hidden" id="calcFuel" value="none">
 
                 <!-- Display Results Column -->
-                <div class="flex flex-col items-center justify-center p-4 bg-white dark:bg-[#191919] rounded-xl border border-slate-200/60 dark:border-neutral-800 text-center relative overflow-hidden">
-                    <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Generated Itinerary</div>
-                    <div class="relative flex items-center justify-center my-3">
-                        <svg class="w-28 h-28 transform -rotate-90">
-                            <circle cx="56" cy="56" r="48" stroke="currentColor" class="text-slate-100 dark:text-neutral-800" stroke-width="8" fill="transparent"></circle>
-                            <circle id="scoreProgressCircle" cx="56" cy="56" r="48" stroke="currentColor" class="text-emerald-600 dark:text-emerald-400 transition-all duration-300" stroke-width="8" fill="transparent" stroke-dasharray="301.6" stroke-dashoffset="50" stroke-linecap="round"></circle>
-                        </svg>
-                        <div class="absolute text-3xl material-icons text-slate-800 dark:text-neutral-200" id="compatibilityIcon">explore</div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-[#191919] rounded-2xl border border-slate-200/60 dark:border-neutral-800 text-center shadow-sm relative min-h-[200px]">
+                    <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-3">Generated Itinerary</div>
+                    
+                    <!-- The Flashcard Container -->
+                    <div class="perspective-1000 w-full">
+                        <div id="flashcard" class="flashcard-inner transition-transform duration-500 transform-style-3d">
+                            <div id="vibeCard" class="flex flex-col items-center justify-center p-6 bg-slate-50 dark:bg-[#202020] rounded-2xl shadow-inner fade-in">
+                                <span id="compatibilityIcon" class="material-icons text-5xl text-emerald-600 dark:text-emerald-400 mb-4">explore</span>
+                                <div class="text-sm md:text-base font-bold text-slate-800 dark:text-white" id="verdictTitle">Checking...</div>
+                                <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed" id="verdictDescription">Build your date to see the plan!</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-sm md:text-base font-semibold text-slate-800 dark:text-white" id="verdictTitle">Checking...</div>
-                    <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-2 max-w-[220px] leading-relaxed" id="verdictDescription">Adjust the options to build our first date!</p>
                 </div>
             </div>
         </div>
@@ -629,9 +639,9 @@
             const humorVal = parseInt(document.getElementById('calcHumor').value);
             const activity = document.getElementById('calcActivity').value;
             const fuel = document.getElementById('calcFuel').value;
-
+        
             document.getElementById('humorValue').innerText = humorVal < 50 ? "Deep & Observant" : "Expressive & Playful";
-
+        
             let fuelPhrase = "";
             if (fuel !== 'none') {
                 const fuelMap = {
@@ -643,9 +653,9 @@
                 };
                 fuelPhrase = `we grab ${fuelMap[fuel]}, `;
             }
-
+        
             let title = "", description = "", icon = "";
-
+        
             if (activity === 'hiking') {
                 title = "The Alpine Start";
                 icon = "landscape";
@@ -663,10 +673,17 @@
                 icon = "explore";
                 description = `${fuelPhrase.charAt(0).toUpperCase() + fuelPhrase.slice(1)}wander aimlessly to hunt for weird local curios, and ${humorVal > 50 ? 'make up backstories for the people we pass' : 'have one of those hours-long conversations about everything and nothing'}.`;
             }
-
+        
+            // Update Content
             document.getElementById('compatibilityIcon').innerText = icon;
             document.getElementById('verdictTitle').innerText = title;
             document.getElementById('verdictDescription').innerText = description;
+        
+            // Trigger Animation
+            const card = document.getElementById('vibeCard');
+            card.classList.remove('fade-in');
+            void card.offsetWidth; // Trigger reflow
+            card.classList.add('fade-in');
         }
 
         // Attach listener for slider

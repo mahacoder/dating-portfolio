@@ -619,20 +619,24 @@
         function handleDbSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('dbName').value.trim();
-            const drink = document.getElementById('dbDrink').value.trim();
+            const fuel = document.getElementById('calcFuel').value.trim(); // Changed to get fuel choice
             const message = document.getElementById('dbMessage').value.trim();
-            const calcScore = compatScoreText.innerText;
+            
+            // Get the generated date info
+            const dateTitle = document.getElementById('verdictTitle').innerText;
+            const generatedDate = document.getElementById('verdictDescription').innerText;
 
-            if (!name || !drink || !message) return;
+            if (!name || !fuel || !message) return;
 
-            // Generate customized success message & clipboard copy
+            // Generate customized success message
             const copyCodeText = document.getElementById('copyText');
-            const userMessageText = `"Hey Ananth! Checked out your page. We hit an alignment score of ${calcScore}. Let's catch some ${drink}."`;
+            // Dynamically build the message based on the generated date
+            const userMessageText = `"Hey Ananth! Checked your page and ran the Forecaster. I got '${dateTitle}': ${generatedDate} Let's grab some ${fuel}."`;
             copyCodeText.innerText = userMessageText;
 
             const modalMsg = document.getElementById('successMessage');
             modalMsg.innerHTML = `
-                Note sent! Thank you, <strong>${name}</strong>, for taking a look at my rhythms. It's fun to hear that your go-to weekend beverage is a <strong>${drink}</strong>. Let's move our chat back to the app and plan a real walk!
+                Note sent! Thank you, <strong>${name}</strong>. It's fun to hear your preferred fuel is <strong>${fuel}</strong>. Let's move our chat back to the app and plan this date!
             `;
 
             // Open popup modal

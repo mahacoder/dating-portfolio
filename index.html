@@ -466,27 +466,7 @@
         <hr class="border-neutral-200 dark:border-neutral-800 my-6">
 
     </div>
-
-    <!-- Custom Success Modal (Replaces standard unsafe alerts) -->
-    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
-        <div class="bg-white dark:bg-[#1e1e1e] border border-slate-200 dark:border-neutral-800 max-w-md w-full p-6 rounded-2xl shadow-xl text-center">
-            <span class="text-4xl select-none block mb-3">☕</span>
-            <h3 class="text-md md:text-lg font-bold text-neutral-800 dark:text-white mb-1">Sync details ready!</h3>
-            <p id="successMessage" class="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">Your daily rhythm is locked in. Here's a custom message you can send directly back on our chat:</p>
-            
-            <div class="p-3 bg-slate-50 dark:bg-neutral-800 rounded-lg text-[10px] md:text-xs font-mono mb-4 text-slate-600 dark:text-neutral-300 flex items-center justify-between gap-2">
-                <span id="copyText" class="text-left font-sans">"Hey Ananth! Checked your page. We hit 88% alignment. Let's grab some coffee."</span>
-                <button onclick="copyToClipboardText()" class="flex items-center justify-center p-1.5 rounded hover:bg-slate-200 dark:hover:bg-neutral-700 text-slate-500 shrink-0" title="Copy message" type="button">
-                    <span id="copyIcon" class="material-icons text-base">content_copy</span>
-                </button>
-            </div>
-
-            <button onclick="closeSuccessModal()" class="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm rounded-lg transition-colors" type="button">
-                Back to Portfolio
-            </button>
-        </div>
-    </div>
-
+    
     <script>
         window.onload = () => { runCalculator(); };
         const themeToggleBtn = document.getElementById('themeToggle');
@@ -712,25 +692,42 @@
         // Run on load
         runCalculator();
 
-        function handleDbSubmit(event) {
+        async function handleDbSubmit(event) {
             event.preventDefault();
+            
+            // 1. Get Form Data
             const name = document.getElementById('dbName').value.trim();
             const social = document.getElementById('dbSocial').value.trim();
             const note = document.getElementById('dbMessage').value.trim();
+            const btn = event.target.querySelector('button[type="submit"]');
             
-            // Auto-pull the Forecaster result
+            // 2. Get Forecaster Data
             const dateTitle = document.getElementById('verdictTitle').innerText;
             const datePlan = document.getElementById('verdictDescription').innerText;
         
-            // Create the message content
-            const message = `Hi! I saw your profile and liked the "${dateTitle}" idea: ${datePlan}. ${note ? 'My thought: ' + note : ''} ${social ? 'My social: ' + social : ''}`;
+            // 3. Construct the message
+            const message = `Hey! I saw your site and I'm down for the "${dateTitle}" plan: ${datePlan}. \n\nMy thought: ${note} \nMy handle: ${social}`;
         
-            const copyCodeText = document.getElementById('copyText');
-            copyCodeText.innerText = message;
-        
-            document.getElementById('successMessage').innerHTML = `Note ready for ${name}! Copy this text to send:`;
-            document.getElementById('successModal').classList.remove('hidden');
-            document.getElementById('dbConnectForm').reset();
+            try {
+                // 4. Copy to Clipboard
+                await navigator.clipboard.writeText(message);
+                
+                // 5. Visual Feedback on the button
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="material-icons text-sm">check</span> Copied to Clipboard!';
+                btn.classList.replace('bg-amber-600', 'bg-emerald-600');
+                
+                // 6. Reset after 3 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-emerald-600', 'bg-amber-600');
+                    document.getElementById('dbConnectForm').reset();
+                }, 3000);
+                
+            } catch (err) {
+                console.error("Failed to copy: ", err);
+                alert("Oops, something went wrong. Try clicking the button again.");
+            }
         }
 
         function adoptPlan() {

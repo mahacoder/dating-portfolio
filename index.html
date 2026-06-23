@@ -287,66 +287,60 @@
 
         <!-- Compatibility Calculator Section -->
         <h2 class="text-lg font-bold mt-6 mb-2 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
-            <span class="material-icons text-neutral-400">analytics</span> The Lifestyle Alignment Check
+            <span class="material-icons text-neutral-400">route</span> The First Date Forecaster
         </h2>
-        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4">A playful look at how our daily styles mesh. Adjust the preferences below to estimate our alignment score.</p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4">Let's skip the small talk. Pick your ideal weekend rhythms, and my system will generate a custom itinerary for us.</p>
 
         <div class="bg-[#fbfbfa] dark:bg-[#202020] border border-slate-200/80 dark:border-neutral-800 rounded-xl p-4 md:p-6 mb-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Inputs column -->
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Ideal Weekend Vibe</label>
-                        <select id="calcWeekend" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
-                            <option value="Hiking/Outdoors">🌲 Wilderness & Trails (Hiking the Cascades)</option>
-                            <option value="Live Music/Gig">🎸 Live Music (Catching a local gig)</option>
-                            <option value="Gaming/Puzzle Board Games">🎲 Cozy Evenings (Intricate board games & food)</option>
-                            <option value="Sleeping In">💤 Slow Pace (Quiet mornings with zero plans)</option>
+                        <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Ideal Weekend Activity</label>
+                        <select id="calcActivity" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+                            <option value="wandering">🚶‍♂️ Wandering the city for weird curios</option>
+                            <option value="music">🎸 Checking out an intimate jazz club</option>
+                            <option value="gaming">🎲 Cozy evening in with the Switch</option>
+                            <option value="hiking">🌲 Hitting a quiet Washington trail</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Coffee Preference</label>
-                        <select id="calcCoffee" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
-                            <option value="Black/Dark Roast">☕ Simple Dark Roast / Black Coffee</option>
-                            <option value="Sweet/Latte">🥛 Flat White / Creamy Latte</option>
-                            <option value="Tea Only">🍵 Green Tea / Fresh Matcha</option>
-                            <option value="No Caffeine">❌ Decaf / Just good energy</option>
+                        <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Fuel (Optional)</label>
+                        <select id="calcFuel" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+                            <option value="none">No fuel, just energy</option>
+                            <option value="coffee">☕ Craft Coffee / Matcha</option>
+                            <option value="drinks">🍸 Cocktails / Local Brews</option>
+                            <option value="bites">🌮 Casual street food bites</option>
+                            <option value="tapas">🧀 Shared plates</option>
                         </select>
                     </div>
 
                     <div>
                         <div class="flex justify-between items-center mb-1">
                             <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Conversation Style</label>
-                            <span id="humorValue" class="text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400">85%</span>
+                            <span id="humorValue" class="text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400">Deep & Observant</span>
                         </div>
-                        <input type="range" id="calcHumor" min="0" max="100" value="85" class="w-full h-1.5 bg-slate-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
-                        <div class="flex justify-between text-[10px] text-neutral-400 mt-1">
-                            <span>Mainly Quiet & Observant</span>
-                            <span>Expressive, Lively & Playful</span>
-                        </div>
+                        <input type="range" id="calcHumor" min="0" max="100" value="30" class="w-full h-1.5 bg-slate-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
                     </div>
                 </div>
 
                 <!-- Display Results Column -->
                 <div class="flex flex-col items-center justify-center p-4 bg-white dark:bg-[#191919] rounded-xl border border-slate-200/60 dark:border-neutral-800 text-center relative overflow-hidden">
-                    <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Alignment Score</div>
-                    
-                    <!-- Large Score Circle -->
+                    <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Generated Itinerary</div>
                     <div class="relative flex items-center justify-center my-3">
                         <svg class="w-28 h-28 transform -rotate-90">
                             <circle cx="56" cy="56" r="48" stroke="currentColor" class="text-slate-100 dark:text-neutral-800" stroke-width="8" fill="transparent"></circle>
-                            <circle id="scoreProgressCircle" cx="56" cy="56" r="48" stroke="currentColor" class="text-emerald-600 dark:text-emerald-400 transition-all duration-300" stroke-width="8" fill="transparent" stroke-dasharray="301.6" stroke-dashoffset="301.6" stroke-linecap="round"></circle>
+                            <circle id="scoreProgressCircle" cx="56" cy="56" r="48" stroke="currentColor" class="text-emerald-600 dark:text-emerald-400 transition-all duration-300" stroke-width="8" fill="transparent" stroke-dasharray="301.6" stroke-dashoffset="50" stroke-linecap="round"></circle>
                         </svg>
-                        <div class="absolute text-2xl font-extrabold tracking-tight text-slate-800 dark:text-neutral-200" id="compatibilityScore">0%</div>
+                        <div class="absolute text-3xl material-icons text-slate-800 dark:text-neutral-200" id="compatibilityIcon">explore</div>
                     </div>
-
                     <div class="text-sm md:text-base font-semibold text-slate-800 dark:text-white" id="verdictTitle">Checking...</div>
-                    <p class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-2 max-w-[200px]" id="verdictDescription">Adjust the options to see how our daily rhythms align!</p>
+                    <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-2 max-w-[220px] leading-relaxed" id="verdictDescription">Adjust the options to build our first date!</p>
                 </div>
             </div>
         </div>
-
+        
         <!-- Notion Quote Blocks -->
         <h2 class="text-lg font-bold mt-10 mb-4 flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
             <span class="material-icons text-neutral-400">rate_review</span> Peer Evaluations (Quotes)
@@ -570,62 +564,64 @@
         const verdictTitle = document.getElementById('verdictTitle');
         const verdictDesc = document.getElementById('verdictDescription');
 
+        const activityInput = document.getElementById('calcActivity');
+        const fuelInput = document.getElementById('calcFuel');
+        const humorInput = document.getElementById('calcHumor');
+        const humorDisplayVal = document.getElementById('humorValue');
+        const compatIcon = document.getElementById('compatibilityIcon');
+        const progressCircle = document.getElementById('scoreProgressCircle');
+        const verdictTitle = document.getElementById('verdictTitle');
+        const verdictDesc = document.getElementById('verdictDescription');
+
         function runCalculator() {
             const humorVal = parseInt(humorInput.value);
-            humorDisplayVal.innerText = `${humorVal}%`;
+            const activity = activityInput.value;
+            const fuel = fuelInput.value;
 
-            // Calculate score factors
-            let weekendScore = 0;
-            switch(weekendInput.value) {
-                case 'Hiking/Outdoors': weekendScore = 100; break;
-                case 'Live Music/Gig': weekendScore = 85; break;
-                case 'Gaming/Puzzle Board Games': weekendScore = 75; break;
-                case 'Sleeping In': weekendScore = 55; break;
+            humorDisplayVal.innerText = humorVal < 50 ? "Deep & Observant" : "Expressive & Playful";
+
+            let fuelPhrase = "";
+            if (fuel !== 'none') {
+                const fuelMap = {
+                    'coffee': "some craft coffee or matcha",
+                    'drinks': "a round of drinks",
+                    'bites': "some casual street food",
+                    'tapas': "some shared plates",
+                    'dessert': "some ice cream"
+                };
+                fuelPhrase = `we grab ${fuelMap[fuel]}, `;
             }
 
-            let coffeeScore = 0;
-            switch(coffeeInput.value) {
-                case 'Black/Dark Roast': coffeeScore = 100; break;
-                case 'Sweet/Latte': coffeeScore = 80; break;
-                case 'Tea Only': coffeeScore = 60; break;
-                case 'No Caffeine': coffeeScore = 40; break;
-            }
+            let title = "", description = "", icon = "";
 
-            // Ideal conversation vibe target is around 80-85% (warm & engaged)
-            const humorSynergy = 100 - Math.abs(85 - humorVal);
-
-            // Weighted balance calculation
-            const finalScore = Math.round((weekendScore * 0.45) + (coffeeScore * 0.25) + (humorSynergy * 0.3));
-
-            // Set the circle progress
-            const circumference = 2 * Math.PI * 48; // radius = 48, circumference ~301.6
-            const strokeOffset = circumference - (finalScore / 100) * circumference;
-            progressCircle.style.strokeDashoffset = strokeOffset;
-
-            compatScoreText.innerText = `${finalScore}%`;
-
-            // Verdict breakdowns with warm, lifestyle-first tones
-            if (finalScore >= 90) {
-                verdictTitle.innerText = "Ideal Co-Pilot 🌲";
-                verdictDesc.innerText = "Our weekly rhythms match up beautifully. Coffee walks, active weekends, and conversations are set to mesh perfectly.";
-            } else if (finalScore >= 75) {
-                verdictTitle.innerText = "Great Synergy ☕";
-                verdictDesc.innerText = "Strong daily alignment here. We likely share a love for refreshing outdoor walks, live tunes, or peaceful weekend rituals.";
-            } else if (finalScore >= 55) {
-                verdictTitle.innerText = "Good Vibe 🎸";
-                verdictDesc.innerText = "Healthy compatibility. A few style differences, but definitely room to share unique perspectives over local coffee.";
+            if (activity === 'hiking') {
+                title = "The Alpine Start";
+                icon = "landscape";
+                description = `${fuelPhrase.charAt(0).toUpperCase() + fuelPhrase.slice(1)}hit a quiet trail in the Cascades, and ${humorVal > 50 ? 'laugh at my terrible trail jokes' : 'enjoy a deeply peaceful, uncrowded hike'}.`;
+            } else if (activity === 'music') {
+                title = "The Deep Groove";
+                icon = "music_note";
+                description = `${fuelPhrase.charAt(0).toUpperCase() + fuelPhrase.slice(1)}find seats at an intimate jazz club, and ${humorVal > 50 ? 'debate the best basslines' : 'soak in the live instruments without having to shout'}.`;
+            } else if (activity === 'gaming') {
+                title = "The Cozy Competitor";
+                icon = "sports_esports";
+                description = `With ${fuel !== 'none' ? fuelPhrase.replace("we grab ", "").replace(", ", "") : "nothing but focus"}, we fire up the Switch for intense co-op and ${humorVal > 50 ? 'talk an unbelievable amount of trash' : 'fall down a YouTube philosophy rabbit hole'}.`;
             } else {
-                verdictTitle.innerText = "A Unique Mix ⚡";
-                verdictDesc.innerText = "We might have slightly different daily rhythms, but some of the best conversations happen between opposites!";
+                title = "The Urban Explorer";
+                icon = "explore";
+                description = `${fuelPhrase.charAt(0).toUpperCase() + fuelPhrase.slice(1)}wander aimlessly to hunt for weird local curios, and ${humorVal > 50 ? 'make up backstories for the people we pass' : 'have one of those hours-long conversations about everything and nothing'}.`;
             }
+
+            compatIcon.innerText = icon;
+            verdictTitle.innerText = title;
+            verdictDesc.innerText = description;
         }
 
-        // Attach listeners to calculation inputs
-        weekendInput.addEventListener('change', runCalculator);
-        coffeeInput.addEventListener('change', runCalculator);
+        // Attach listeners
+        activityInput.addEventListener('change', runCalculator);
+        fuelInput.addEventListener('change', runCalculator);
         humorInput.addEventListener('input', runCalculator);
 
-        // Run calculator on initial load
         runCalculator();
 
         function handleDbSubmit(event) {

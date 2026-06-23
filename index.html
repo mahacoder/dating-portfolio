@@ -236,15 +236,15 @@
                         <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 font-semibold text-[10px] mt-0.5">A</span>
                         <span>"I lost 50 lbs and completely rebuilt my relationship with fitness."</span>
                     </button>
-                    <!-- Option B (Truth) -->
+                    <!-- Option B (Lie) -->
                     <button onclick="guessOption('B', this)" class="w-full text-left p-3 rounded-lg border border-slate-200 dark:border-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-800 transition-all duration-150 flex items-start gap-3 text-xs md:text-sm">
                         <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 font-semibold text-[10px] mt-0.5">B</span>
-                        <span>"I once trained alongside an Olympic silver medalist (and lived to tell the tale)."</span>
+                        <span>"I am classically trained on the fretless bass guitar and occasionally play live jazz gigs."</span>
                     </button>
-                    <!-- Option C (Lie) -->
+                    <!-- Option C (Truth) -->
                     <button onclick="guessOption('C', this)" class="w-full text-left p-3 rounded-lg border border-slate-200 dark:border-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-800 transition-all duration-150 flex items-start gap-3 text-xs md:text-sm">
                         <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 font-semibold text-[10px] mt-0.5">C</span>
-                        <span>"I am classically trained on the fretless bass guitar and occasionally play live jazz gigs."</span>
+                        <span>"I once trained alongside an Olympic silver medalist (and lived to tell the tale)."</span>
                     </button>
                 </div>
         
@@ -465,7 +465,7 @@
         
             resultBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'dark:bg-emerald-950/20', 'dark:text-emerald-400', 'bg-rose-50', 'text-rose-800', 'dark:bg-rose-950/20', 'dark:text-rose-400');
         
-            if (option === 'C') {
+            if (option === 'B') {
                 // Correctly guessed the lie
                 element.classList.add('border-emerald-500', 'bg-emerald-50/50', 'dark:bg-emerald-950/10');
                 resultBox.classList.add('bg-emerald-50', 'text-emerald-800', 'dark:bg-emerald-950/20', 'dark:text-emerald-400');
@@ -474,9 +474,9 @@
                         <span class="material-icons">check_circle</span>
                         <div>
                             <strong>Spot on! You spotted the lie.</strong><br>
-                            Statement <strong>C</strong> is indeed the lie. I am entirely self-taught and still very much a beginner on the bass, but I am practicing!
+                            Statement <strong>B</strong> is indeed the lie. I am entirely self-taught and still very much a beginner on the bass, but I am practicing!
                             <br><br>
-                            <strong>A & B are absolutely true:</strong> I successfully lost 50 lbs and rebuilt my relationship with fitness, and I really did train alongside an Olympic silver medalist!
+                            <strong>A & C are absolutely true:</strong> I successfully lost 50 lbs and rebuilt my relationship with fitness, and I really did train alongside an Olympic silver medalist!
                         </div>
                     </div>
                 `;
@@ -491,7 +491,7 @@
                             <strong>That is actually a complete TRUTH!</strong><br>
                             Statement <strong>${option}</strong> really happened. 
                             <br><br>
-                            The real <strong>LIE</strong> is statement <strong>C</strong>. I am entirely self-taught and still very much a beginner on the bass!
+                            The real <strong>LIE</strong> is statement <strong>B</strong>. I am entirely self-taught and still very much a beginner on the bass!
                         </div>
                     </div>
                 `;

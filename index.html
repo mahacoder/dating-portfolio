@@ -554,32 +554,23 @@
             }
         }
 
-        const weekendInput = document.getElementById('calcWeekend');
-        const coffeeInput = document.getElementById('calcCoffee');
-        const humorInput = document.getElementById('calcHumor');
-        const humorDisplayVal = document.getElementById('humorValue');
-
-        const compatScoreText = document.getElementById('compatibilityScore');
-        const progressCircle = document.getElementById('scoreProgressCircle');
-        const verdictTitle = document.getElementById('verdictTitle');
-        const verdictDesc = document.getElementById('verdictDescription');
-
         const activityInput = document.getElementById('calcActivity');
         const fuelInput = document.getElementById('calcFuel');
         const humorInput = document.getElementById('calcHumor');
         const humorDisplayVal = document.getElementById('humorValue');
+        
         const compatIcon = document.getElementById('compatibilityIcon');
-        const progressCircle = document.getElementById('scoreProgressCircle');
         const verdictTitle = document.getElementById('verdictTitle');
         const verdictDesc = document.getElementById('verdictDescription');
-
+        
         function runCalculator() {
             const humorVal = parseInt(humorInput.value);
             const activity = activityInput.value;
             const fuel = fuelInput.value;
-
+        
+            // Update the text label dynamically
             humorDisplayVal.innerText = humorVal < 50 ? "Deep & Observant" : "Expressive & Playful";
-
+        
             let fuelPhrase = "";
             if (fuel !== 'none') {
                 const fuelMap = {
@@ -591,9 +582,9 @@
                 };
                 fuelPhrase = `we grab ${fuelMap[fuel]}, `;
             }
-
+        
             let title = "", description = "", icon = "";
-
+        
             if (activity === 'hiking') {
                 title = "The Alpine Start";
                 icon = "landscape";
@@ -611,17 +602,18 @@
                 icon = "explore";
                 description = `${fuelPhrase.charAt(0).toUpperCase() + fuelPhrase.slice(1)}wander aimlessly to hunt for weird local curios, and ${humorVal > 50 ? 'make up backstories for the people we pass' : 'have one of those hours-long conversations about everything and nothing'}.`;
             }
-
+        
             compatIcon.innerText = icon;
             verdictTitle.innerText = title;
             verdictDesc.innerText = description;
         }
-
+        
         // Attach listeners
         activityInput.addEventListener('change', runCalculator);
         fuelInput.addEventListener('change', runCalculator);
-        humorInput.addEventListener('input', runCalculator);
-
+        humorInput.addEventListener('input', runCalculator); // Corrected to 'input' for real-time slider
+        
+        // Run on load
         runCalculator();
 
         function handleDbSubmit(event) {

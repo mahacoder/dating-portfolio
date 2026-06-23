@@ -400,6 +400,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- Say hello -->
+        <div class="mt-10 bg-amber-50/20 dark:bg-amber-950/10 p-5 md:p-6 rounded-2xl border border-amber-100 dark:border-amber-900/20">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-amber-600 dark:text-amber-400 material-icons">waving_hand</span>
+                <h3 class="text-md md:text-lg font-bold text-neutral-800 dark:text-white">Let's make it happen</h3>
+            </div>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-6">If the itinerary above sounds like a good time, drop a note. Let's take this offline and see if we click.</p>
+        
+            <form id="dbConnectForm" onsubmit="handleDbSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-semibold text-amber-600 uppercase tracking-wider mb-1">Name</label>
+                        <input type="text" id="dbName" required placeholder="Ex: Alex" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-semibold text-amber-600 uppercase tracking-wider mb-1">Instagram/Social Handle</label>
+                        <input type="text" id="dbSocial" placeholder="Ex: @username" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-amber-500 outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-semibold text-amber-600 uppercase tracking-wider mb-1">Thought on the plan?</label>
+                    <textarea id="dbMessage" rows="2" placeholder="Tell me what you think about the itinerary..." class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-amber-500 outline-none resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 px-4 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs md:text-sm rounded-xl transition-all shadow-lg shadow-amber-600/20 flex items-center justify-center gap-2">
+                    <span class="material-icons text-sm">send</span> Send Invitation
+                </button>
+            </form>
+        </div>
         
         <!-- Notion Quote Blocks -->
         <!-- Peer Evaluations (Real + 1 Humorous) -->
@@ -430,35 +459,6 @@
 
         <!-- Notion Divider -->
         <hr class="border-neutral-200 dark:border-neutral-800 my-6">
-
-        <!-- Mock Database Submit Area -->
-        <div class="mt-6 bg-emerald-50/10 dark:bg-neutral-900/40 p-5 md:p-6 rounded-xl border border-emerald-100/60 dark:border-neutral-800">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="p-2 bg-emerald-50 dark:bg-neutral-800 rounded-lg text-emerald-600 dark:text-emerald-400 material-icons">chat</span>
-                <h3 class="text-md md:text-lg font-bold text-neutral-800 dark:text-white">Say Hello</h3>
-            </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4">If you find yourself nodding along with these points, leave a brief note. It will let us take our connection offline for a quick stroll or coffee!</p>
-
-            <form id="dbConnectForm" onsubmit="handleDbSubmit(event)" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1">First Name or App Nickname</label>
-                        <input type="text" id="dbName" required placeholder="Ex: Chloe" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1">Your Favorite Seattle Beverage</label>
-                        <input type="text" id="dbFuel" required placeholder="Ex: Flat White, Matcha, IPA" class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1">Your Ideal Sunday walk looks like...</label>
-                    <textarea id="dbMessage" rows="3" required placeholder="Grabbing coffee, walking around Green Lake, exploring local vinyl spots..." class="w-full p-2.5 rounded-lg bg-white dark:bg-[#191919] border border-slate-200 dark:border-neutral-700 text-xs md:text-sm focus:ring-1 focus:ring-emerald-500 outline-none resize-none"></textarea>
-                </div>
-                <button type="submit" class="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm">
-                    <span class="material-icons text-base">send</span> Send Coffee Sync Request
-                </button>
-            </form>
-        </div>
 
     </div>
 
@@ -710,20 +710,20 @@
         function handleDbSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('dbName').value.trim();
-            const fuel = document.getElementById('calcFuel').value.trim();
-            const message = document.getElementById('dbMessage').value.trim();
+            const social = document.getElementById('dbSocial').value.trim();
+            const note = document.getElementById('dbMessage').value.trim();
             
+            // Auto-pull the Forecaster result
             const dateTitle = document.getElementById('verdictTitle').innerText;
-            const generatedDate = document.getElementById('verdictDescription').innerText;
-
-            if (!name || !fuel || !message) return;
-
+            const datePlan = document.getElementById('verdictDescription').innerText;
+        
+            // Create the message content
+            const message = `Hi! I saw your profile and liked the "${dateTitle}" idea: ${datePlan}. ${note ? 'My thought: ' + note : ''} ${social ? 'My social: ' + social : ''}`;
+        
             const copyCodeText = document.getElementById('copyText');
-            const userMessageText = `"Hey Ananth! Checked your page and ran the Forecaster. I got '${dateTitle}': ${generatedDate} Let's grab some ${fuel}."`;
-            copyCodeText.innerText = userMessageText;
-
-            document.getElementById('successMessage').innerHTML = `Note sent! Thank you, <strong>${name}</strong>. It's fun to hear your preferred fuel is <strong>${fuel}</strong>. Let's move our chat back to the app and plan this date!`;
-
+            copyCodeText.innerText = message;
+        
+            document.getElementById('successMessage').innerHTML = `Note ready for ${name}! Copy this text to send:`;
             document.getElementById('successModal').classList.remove('hidden');
             document.getElementById('dbConnectForm').reset();
         }

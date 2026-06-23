@@ -45,6 +45,26 @@
         body {
             overflow-x: hidden;
         }
+        /* Update the slider styling to be dynamic */
+        #calcHumor {
+            --val: 30%; /* Default value */
+            background: linear-gradient(to right, #6366f1 var(--val), #f59e0b var(--val), #e2e8f0 var(--val));
+        }
+        
+        .dark #calcHumor {
+            background: linear-gradient(to right, #6366f1 var(--val), #f59e0b var(--val), #374151 var(--val));
+        }
+        
+        /* Style the drag handle (the thumb) */
+        #calcHumor::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #10b981; /* Emerald border */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-[#ffffff] text-[#37352f] dark:bg-[#191919] dark:text-[#ebecee] font-sans min-h-screen transition-colors duration-200">
@@ -335,7 +355,10 @@
                             <label class="block text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Conversation Style</label>
                             <span id="humorValue" class="text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400">Deep & Observant</span>
                         </div>
-                        <input type="range" id="calcHumor" min="0" max="100" value="30" class="w-full h-1.5 bg-slate-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+                        <input type="range" id="calcHumor" min="0" max="100" value="30" 
+                               oninput="this.style.setProperty('--val', this.value + '%')" 
+                               class="w-full h-1.5 bg-slate-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer transition-colors" 
+                               style="background: linear-gradient(to right, #6366f1 var(--val, 30%), #f59e0b var(--val, 30%), #e2e8f0 var(--val, 30%));">
                     </div>
                 </div>
 
